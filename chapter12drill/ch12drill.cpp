@@ -9,8 +9,11 @@ int main()
 try{
 
 	using namespace Graph_lib;
+
+    int xmax = 1280;
+    int ymax = 720;
 	
-	Simple_window win {Point{100,100}, 600, 400, "My window"};  //ablak létrehozás (100,100) pontban, 600*400 , név:My window
+	Simple_window win {Point{100,100}, xmax ,ymax, "My window"};  //ablak létrehozás (100,100) pontban, 600*400 , név:My window
 
 	win.wait_for_button();
 
@@ -69,6 +72,7 @@ win.set_label("Canvas #7");
 win.wait_for_button();
 
 Text t {Point{350,250}, "Hello, graphical world!"};
+t.set_color(Color::green);
 win.attach(t);
 win.set_label("Canvas #8");
 win.wait_for_button();
@@ -78,11 +82,13 @@ win.attach(ii);
 win.set_label("Canvas #10");
 win.wait_for_button();
 
-ii.move(150,250);
+ii.move(180,250);
 win.set_label("Canvas #11");
 win.wait_for_button();
 
 Circle c {Point{100,200},50};
+c.set_style(Line_style(Line_style::dash,3));
+c.set_fill_color(Color::magenta);
 // Ellipse e {Point{100,200},75,25}; 
 // e.set_color(Color::dark_red);
 Mark m {Point{100,200},'x'};
@@ -91,11 +97,17 @@ ostringstream oss;
 oss << "screen size: " << x_max() << "*" << y_max() << "; window size: " << win.x_max() << "*" << win.y_max();
 Text sizes {Point{100,20},oss.str()};
 
+Ellipse e {Point{200,500}, 100, 50};
+    e.set_fill_color(Color::red);
+
 win.attach(c);
 win.attach(m);
-// win.attach(e);
+ win.attach(e);
+ win.attach(sizes);
 win.set_label("Canvas #12");
 win.wait_for_button();
+
+
 }
 catch(exception& e){
 	return 1;
