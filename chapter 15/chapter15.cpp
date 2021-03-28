@@ -70,16 +70,7 @@ int main(){
     win.wait_for_button();
 
 
-
-
-
-    //Class definiton drill:
-
-    struct Person
-    {
-    	string name;
-    	int age;
-    };
+    
 
 
 }
